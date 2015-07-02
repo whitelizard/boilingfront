@@ -1,6 +1,6 @@
 # Front-end Manifest
 
-Just my personal collection to build on, regarding front-end frameworks, programming style, ideoms etc etc.
+Just my personal collection of notes regarding front-end - frameworks, programming style, ideoms, resources etc etc.
 
 ## Table of Contents
 
@@ -24,6 +24,9 @@ gulp X  // run your build, server, watch tasks that automatically compiles types
 AngularJS: Gives data binding, modules, markup abstractions.
 (Twitter) Bootstrap: CSS abstractions handling everything from media queries & grids to buttons & colors.
 Angular-UI: Bundle of directives for bootstrap components using angularjs instead of jQuery.
+
+#### Resources
+- Important angular style guide: [johnpapa](https://github.com/johnpapa/angular-styleguide)
 
 ## Situational GUI Packages
 
