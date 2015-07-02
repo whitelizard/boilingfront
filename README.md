@@ -13,11 +13,15 @@ Just my personal collection of notes regarding front-end - frameworks, programmi
 Thoughts and resources on interesting entire framework and tool combinations for a project.
 
 ### Dev framework: `node.js`, `gulp`, `typescript`, `less/sass`
+Install `node.js` for your platfom.
 ```
-// install node.js for your platfom
-npm install  // reads the projects package.json and installs all components
-gulp X  // run your build, server, watch tasks that automatically compiles typescript, less/sass etc
+npm install
 ```
+will read the projects `package.json` and installs all components.
+```
+gulp X
+```
+run your build, server, watch tasks that automatically compiles typescript, less/sass etc.
 
 ### App framework: `angularjs`, `bootstrap`, `angular-ui`
 
