@@ -2,24 +2,42 @@
 
 Just my personal collection to build on, regarding front-end frameworks, programming style, ideoms etc etc.
 
-## Framework combinations and boilerplates
+## Table of Contents
+
+  1. [Framework Combinations and Boilerplates](#framework-combinations-and-boilerplates)
+  1. [Situational GUI Packages](#situational-gui-packages)
+  1. [JavaScript Knowledge Collection](#javascript-knowledge-collection)
+
+## Framework Combinations and Boilerplates
 
 Thoughts and resources on interesting entire framework and tool combinations for a project.
 
-### Development framework: node.js, gulp, typescript, less/sass
+### Dev framework: `node.js`, `gulp`, `typescript`, `less/sass`
 ```
 // install node.js for your platfom
 npm install  // reads the projects package.json and installs all components
 gulp X  // run your build, server, watch tasks that automatically compiles typescript, less/sass etc
 ```
 
-## JavaScript log
+### App framework: `angularjs`, `bootstrap`, `angular-ui`
+
+AngularJS: Gives data binding, modules, markup abstractions.
+(Twitter) Bootstrap: CSS abstractions handling everything from media queries & grids to buttons & colors.
+Angular-UI: Bundle of directives for bootstrap components using angularjs instead of jQuery.
+
+## Situational GUI Packages
+
+- `font-awesome`
+- `d3`
+- `leaflet`
+
+## JavaScript Knowledge Collection
 
 Collected knowledge, good practices and ideoms in the actual programming language of the web, building on top of the other in a somewhat cronological order.
 
 ### Basic language research notes
 
-#### Ideoms & Note particles
+#### Ideoms and Note particles
 ```javascript
 function foo() {} // is equal to:
 var foo = function () {};
