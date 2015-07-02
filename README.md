@@ -1,10 +1,17 @@
 # Front-end Manifest
 
-Just my personal log to build on, regarding front-end frameworks, programming style, ideoms etc etc.
+Just my personal collection to build on, regarding front-end frameworks, programming style, ideoms etc etc.
 
 ## Framework combinations and boilerplates
 
 Thoughts and resources on interesting entire framework and tool combinations for a project.
+
+### Development framework: node.js, gulp, typescript, less/sass
+```
+// install node.js for your platfom
+npm install  // reads the projects package.json and installs all components
+gulp X  // run your build, server, watch tasks that automatically compiles typescript, less/sass etc
+```
 
 ## JavaScript log
 
@@ -57,6 +64,8 @@ myList.push('world');
 - Don’t use `_` in the beginning of identifiers.
 
 - Use CAPS for global variables (Not widely accepted).
+
+- Always use JSLint
 
 - Reserved words
   ```javascript
