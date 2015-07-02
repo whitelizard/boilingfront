@@ -133,7 +133,7 @@ divEl.innerHTML = html.supplant(data);
 ```
 
 #### `isArray` function
-`Use your framworks version, like angular.isArray`
+(Use your framworks version, for instance `angular.isArray`)
 ```javascript
 if (typeof Array.isArray !== 'function') {
     Array.isArray = function (value) {
@@ -145,20 +145,16 @@ if (typeof Array.isArray !== 'function') {
 #### Type conversions
 ```javascript
 num = +str; // convert string to number
-str = ""+num; // num to string
+str = ''+num; // num to string
 isOk = !!count; // convert to boolean
 num = parseInt('08', 10); // always specify base 10
-```
-
-#### 
-```javascript
 ```
 
 ### Douglas Crockford: The Better Parts - JSConfUY 2014
 [Youtube video](https://www.youtube.com/watch?v=bo36MrBfTk4)
 
 #### Don't use `for`, `for in`, `while` (ES5)
-Use forEach on arrays. And for looping on objects: use Object.keys
+Use `forEach` on arrays. And for looping on objects: use `Object.keys`
 ```javascript
 Object.keys(anObject).forEach(function (key) {
     console.log(anObject[key]);
