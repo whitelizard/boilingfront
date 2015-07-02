@@ -25,9 +25,9 @@ run your build, server, watch tasks that automatically compiles typescript, less
 
 ### App framework: `angularjs`, `bootstrap`, `angular-ui`
 
-AngularJS: Gives data binding, modules, markup abstractions.
-(Twitter) Bootstrap: CSS abstractions handling everything from media queries & grids to buttons & colors.
-Angular-UI: Bundle of directives for bootstrap components using angularjs instead of jQuery.
+- AngularJS: Gives data binding, modules, markup abstractions.
+- (Twitter) Bootstrap: CSS abstractions handling everything from media queries & grids to buttons & colors.
+- Angular-UI: Bundle of directives for bootstrap components using angularjs instead of jQuery.
 
 #### Resources
 - Important angular style guide: [johnpapa](https://github.com/johnpapa/angular-styleguide)
