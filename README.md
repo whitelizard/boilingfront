@@ -194,6 +194,7 @@ Object.keys(anObject).forEach(function (key) {
     console.log(anObject[key]);
 });
 ```
+- (Angular has its own version of `forEach`)
 
 #### ES6 recursion
 In ES6 we can use recursion instead of loops (without memory penalties)
