@@ -31,6 +31,7 @@ run your build, server, watch tasks that automatically compiles typescript, less
 
 #### Resources
 - Important angular style guide: [johnpapa](https://github.com/johnpapa/angular-styleguide)
+- Deep dive into Angular 2: [dive](https://www.opencredo.com/2015/07/08/a-deep-dive-into-angular-2-0/)
 
 ## Situational GUI Packages
 
