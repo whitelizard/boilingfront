@@ -239,4 +239,99 @@ function constructor(spec) {
 }
 ```
 
+### AngularJS 1.x + Typescript
+Personal evolving style guide until widely adopted such appears, or Angular 2.0 is released.
+#### Service template
+```typescript
+///<reference path="../d.ts/angularjs/angular.d.ts"/>
+
+module services {
+    'use strict';
+    
+    interface service {  // matches name of the angular service
+        getItems(): ItemType[];
+    }
+    
+    export interface ItemType {
+        name: string;
+        available: boolean;
+        size?: number;
+    }
+
+    /////////////////////////
+    
+    class Service implements service {
+    
+        static $inject = ['$log'];
+        static $log;
+        constructor(public $log) {}
+        
+        private items: ItemType[];
+        
+        getItems():ItemType[] {
+            return this.items;
+        }
+        
+        addItem(newItem:ItemType):void {
+            this.items.push(newItem);
+            this.$log.debug('Item added');
+        }
+        
+    }
+    
+    /////////////////////////
+    
+    angular
+        .module('services')
+        .factory('service', factory)
+    ;
+    
+    factory.$inject = ['$log'];
+    
+    function factory($log) {
+        return new Service($log);
+    }
+}
+```
+
+#### Controller template
+```typescript
+///<reference path="../d.ts/angularjs/angular.d.ts"/>
+
+module app {
+    'use strict';
+    
+    interface IMyController {
+        items: ItemType[];
+        newItem: ItemType;
+        addItem();
+    }
+    
+    /////////////////////////
+    
+    class MyController implements IMyController {
+        
+        items: ItemType[];
+        newItem: ItemType;
+        
+        static $inject = ['$log', 'service'];
+        constructor(public $log, public service) {
+            this.items = this.service.getItems();
+        }
+        
+        addItem() {
+            this.service.addItem(this.newItem);
+            this.$log.debug('Item added');
+        }
+        
+    }
+    
+    /////////////////////////
+    
+    angular
+        .module('app')
+        .controller('app.MyController', MyController)
+    ;
+}
+```
 
