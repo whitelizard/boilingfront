@@ -250,6 +250,7 @@ module services {
     
     interface service {  // matches name of the angular service
         getItems(): ItemType[];
+        addItem(newItem:ItemType):void;
     }
     
     export interface ItemType {
