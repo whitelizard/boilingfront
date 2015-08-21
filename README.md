@@ -265,7 +265,9 @@ module services {
     
         static $inject = ['$log'];
         static $log;
-        constructor(public $log) {}
+        constructor($log) {
+            Service.$log = $log;
+        }
         
         private items: ItemType[];
         
