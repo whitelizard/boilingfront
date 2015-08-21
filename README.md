@@ -294,6 +294,7 @@ module services {
     }
 }
 ```
+- Making dependencies explicitly static exposes them to other possible classes used in the same file, as `Service.$log(...)`
 
 #### Controller template
 ```typescript
