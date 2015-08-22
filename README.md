@@ -239,9 +239,9 @@ function constructor(spec) {
 }
 ```
 
-### AngularJS 1.x + Typescript
+## AngularJS 1.x + Typescript
 Personal evolving style guide until widely adopted such appears, or Angular 2.0 is released.
-#### Service template
+### Service template
 ```typescript
 ///<reference path="../d.ts/angularjs/angular.d.ts"/>
 
@@ -298,7 +298,7 @@ module services {
 ```
 - Making dependencies explicitly static exposes them to other possible classes used in the same file, as `Service.$log(...)`, instead of having to deal with external dependencies as arguments to every other class used in the file.
 
-#### Controller template
+### Controller template
 ```typescript
 ///<reference path="../d.ts/angularjs/angular.d.ts"/>
 
