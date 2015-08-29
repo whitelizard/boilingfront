@@ -1,0 +1,24 @@
+{
+  "name": "ngts-poc",
+  "version": "0.1.0",
+  "authors": [
+    "Esbjörn Blomquist <esbblo@gmail.com>"
+  ],
+  "description": "None yet",
+  "main": "index.html",
+  "keywords": [
+    "portal"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-material": "latest",
+    "mdi": "latest"
+  }
+}

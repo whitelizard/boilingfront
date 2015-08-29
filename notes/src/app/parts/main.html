@@ -1,0 +1,40 @@
+
+	<md-tabs md-selected="notebook.selectedIndex" md-border-bottom md-autoselect flex>
+		<md-tab ng-repeat="note in notebook.notes">
+			<md-tab-label>{{note.name}}</md-tab-label>
+			<md-tab-body>
+				<md-content layout-fill layout="column">
+					<textarea layout-padding ng-model="note.text" flex ng-change="notebook.saveChange()"></textarea>
+				</md-content>
+				<div class="actions-fab">
+					<md-fab-speed-dial md-direction="up" class="md-fling">
+						<md-fab-trigger>
+						    <md-button aria-label="Options" class="md-fab md-accent md-mini">
+							    <md-icon class="mdi mdi-menu"></md-icon>
+						    </md-button>
+						</md-fab-trigger>
+						<md-fab-actions>
+						    <md-button aria-label="facebook" class="md-fab md-raised md-mini" ng-click="notebook.renameNoteDialog($event, notebook.selectedIndex)">
+							    <md-icon class="mdi mdi-pen"></md-icon>
+						    </md-button>
+						    <md-button aria-label="Delete note" class="md-fab md-raised md-mini" ng-click="notebook.confirmDelete($event, notebook.selectedIndex)" ng-disabled="notebook.notes.length <= 1">
+							    <md-icon class="mdi mdi-delete"></md-icon>
+						    </md-button>
+						</md-fab-actions>
+					</md-fab-speed-dial>
+				</div>
+			</md-tab-body>
+		</md-tab>
+	</md-tabs>
+    <md-button class="md-fab md-mini add-note-fab" aria-label="Create new note" ng-click="notebook.addNote($event)">
+        <md-icon class="mdi mdi-note"></md-icon>
+    </md-button>
+    <!-- <form ng-submit="notebook.addNote(notebook.newNoteName)" layout="row" class="new-note">
+        <md-input-container flex>
+            <label for="inputName">New note</label>
+            <input name="inputName" type="text" ng-model="notebook.newNoteName">
+        </md-input-container>
+        <md-button class="md-icon-button md-raised" ng-disabled="!notebook.newNoteName" type="submit" aria-label="Delete note">
+            <md-icon class="mdi mdi-note"></md-icon>
+        </md-button>
+    </form> -->

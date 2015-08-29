@@ -1,0 +1,18 @@
+
+<md-dialog aria-label="Rename note">
+    <md-dialog-content>
+        <h2 class="md-title">{{dialog.title}}</h2>
+        <md-input-container>
+            <label for="inputName">Note name</label>
+            <input name="inputName" type="text" id="label" ng-model="dialog.newNoteName">
+        </md-input-container>
+    </md-dialog-content>
+    <div class="md-actions">
+          <md-button ng-click="dialog.$mdDialog.cancel()">
+              Cancel
+          </md-button>
+          <md-button ng-click="dialog.$mdDialog.hide(dialog.newNoteName)">
+              OK
+          </md-button>
+    </div>
+</md-dialog>

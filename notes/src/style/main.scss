@@ -1,0 +1,48 @@
+/* @import "bootstrap.min.css"; */
+@import "angular-material.min.css";
+@import "css/materialdesignicons.min.css";
+@import "../../../material/src/core/style/variables.scss";  /*needs material repo in same folder as this project*/
+@import "../../../material/src/core/style/mixins.scss";  /*needs material repo in same folder as this project*/
+
+.mdi {
+    font-size: 24px;
+}
+md-tabs {
+    width: 100%;
+    border: 1px solid #e1e1e1;
+    md-tabs-wrapper {
+        top: -8px;
+    }
+    md-tab-body {
+        position: relative;
+    }
+    [md-template="::tab.template"] {
+        height: 100%;
+    }
+    md-tab-item.md-tab > span {
+        text-transform: none;
+    }
+}
+.actions-fab {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+}
+.add-note-fab {
+    position: absolute;
+    top: 28px;
+    right: 14px;
+}
+textarea {
+    border: 0;
+    resize: none;
+}
+md-input-container {
+    padding-bottom: 10px;
+}
+/* form.new-note {
+    padding-top: 5px;
+}
+ */
+@import "theme.scss";
+
