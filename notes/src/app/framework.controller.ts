@@ -10,11 +10,17 @@ module app {
     /////////////////////////
 
     class FrameworkController implements IFrameworkController {
+        
+        //------ SETUP ------//
 
         static $inject = [];
         constructor() {}
+        
+        //------ MEMBERS ------//
 
         appName:string = 'Notes app';
+        
+        //------ METHODS ------//
 
     }
     

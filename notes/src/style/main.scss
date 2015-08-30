@@ -1,4 +1,4 @@
-/* @import "bootstrap.min.css"; */
+
 @import "angular-material.min.css";
 @import "css/materialdesignicons.min.css";
 @import "../../../material/src/core/style/variables.scss";  /*needs material repo in same folder as this project*/
@@ -25,13 +25,8 @@ md-tabs {
 }
 .actions-fab {
     position: absolute;
-    bottom: 5px;
-    right: 5px;
-}
-.add-note-fab {
-    position: absolute;
-    top: 28px;
-    right: 14px;
+    bottom: 10px;
+    right: 10px;
 }
 textarea {
     border: 0;
@@ -40,9 +35,5 @@ textarea {
 md-input-container {
     padding-bottom: 10px;
 }
-/* form.new-note {
-    padding-top: 5px;
-}
- */
 @import "theme.scss";
 

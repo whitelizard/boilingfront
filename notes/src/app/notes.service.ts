@@ -26,19 +26,13 @@ module app {
         //------ SETUP ------//
 
         static $inject = ['$log', '$timeout'];
-		
-        static $log;
-        static $timeout;
         
-        constructor($log, $timeout) {
-            NotesService.$log = $log;
-            NotesService.$timeout = $timeout;
-			
+        constructor(public $log, public $timeout) {
 			if (angular.isDefined(localStorage[this.localStorageAddress])) {
 				try {
 					var storedNotes = angular.fromJson(localStorage[this.localStorageAddress]);
 				} catch (e) {
-					NotesService.$log.debug(e);
+					this.$log.debug(e);
 				}
 				if (angular.isArray(storedNotes) && angular.isObject(storedNotes[0])) {
 					this.notes = storedNotes;
@@ -60,13 +54,13 @@ module app {
 
         addNote(name:string):void {
             this.notes.push({name:name, text:''});
-            NotesService.$log.debug('Note created');
+            this.$log.debug('Note created');
 			this.storeNotes();
         }
 
         deleteNote(index:number):void {
             this.notes.splice(index, 1);
-            NotesService.$log.debug('Note deleted');
+            this.$log.debug('Note deleted');
 			this.storeNotes();
         }
 
@@ -78,10 +72,9 @@ module app {
         storeNotes():void {
 			if (this.saving) return;
 			this.saving = true;
-			// Delay save to never save more often than every 2s
-			NotesService.$timeout(angular.bind(this, function () {
+			this.$timeout(angular.bind(this, function () {  // Delay save to never save more often than every 2s
 				localStorage[this.localStorageAddress] = angular.toJson(this.notes);
-				NotesService.$log.debug('Notes stored');
+				this.$log.debug('Notes stored');
 				this.saving = false;
 			}), 2000, false);
 		}
