@@ -305,28 +305,42 @@ module services {
 module app {
     'use strict';
     
-    interface IMyController {
-        items: ItemType[];
-        newItem: ItemType;
-        addItem();
+    interface IItemController {
+    
+        items: IItem[];
+        newItem: IItem;
+        
+        addItem: ()=>void;
+        renameItem: (name:string)=>void;
     }
     
     /////////////////////////
     
-    class MyController implements IMyController {
+    class ItemController implements IItemController {
         
-        items: ItemType[];
-        newItem: ItemType;
+        //------ SETUP ------//
         
         static $inject = ['$log', 'service'];
+        
         constructor(public $log, public service) {
             this.items = this.service.getItems();
         }
         
-        addItem() {
+        //------ MEMBERS ------//
+        
+        items: IItem[];
+        newItem: IItem;
+        
+        //------ METHODS ------//
+        
+        addItem():void {
             this.service.addItem(this.newItem);
             this.$log.debug('Item added');
         }
+		
+    		renameItem(name:string):void {
+    			  this.service.renameItem(name);
+    		}
         
     }
     
@@ -334,7 +348,7 @@ module app {
     
     angular
         .module('app')
-        .controller('app.MyController', MyController)
+        .controller('app.ItemController', ItemController)
     ;
 }
 ```
