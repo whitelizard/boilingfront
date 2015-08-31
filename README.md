@@ -248,34 +248,40 @@ Personal evolving style guide until widely adopted such appears, or Angular 2.0 
 module services {
     'use strict';
     
-    interface service {  // matches name of the angular service
-        getItems(): ItemType[];
-        addItem(newItem:ItemType):void;
+    interface IItemService {
+        getItems: ()=>IItem[];
+        addItem: (newItem:IItem)=>void;
     }
     
-    export interface ItemType {
+    export interface IItem {
         name: string;
         available: boolean;
-        size?: number;
     }
 
     /////////////////////////
     
-    class Service implements service {
+    class ItemService implements IItemService {
+        
+        //------ SETUP ------//
     
         static $inject = ['$log'];
         static $log;
-        constructor($log) {
-            Service.$log = $log;
+        
+        constructor(public $log) {
+            ItemService.$log = $log;
         }
         
-        private items: ItemType[];
+        //------ MEMBERS ------//
         
-        getItems():ItemType[] {
+        private items: IItem[];
+        
+        //------ METHODS ------//
+        
+        getItems():IItem[] {
             return this.items;
         }
         
-        addItem(newItem:ItemType):void {
+        addItem(newItem:IItem):void {
             this.items.push(newItem);
             this.$log.debug('Item added');
         }
@@ -286,17 +292,17 @@ module services {
     
     angular
         .module('services')
-        .factory('service', factory)
+        .factory('itemService', factory)
     ;
     
     factory.$inject = ['$log'];
     
     function factory($log) {
-        return new Service($log);
+        return new ItemService($log);
     }
 }
 ```
-- Making dependencies explicitly static exposes them to other possible classes used in the same file, as `Service.$log(...)`, instead of having to deal with external dependencies as arguments to every other class used in the file.
+- Making dependencies explicitly static exposes them to other possible classes used in the same file, as `ItemService.$log(...)`, instead of having to deal with external dependencies as arguments to every other class used in the file.
 
 ### Controller template
 ```typescript
@@ -320,10 +326,10 @@ module app {
         
         //------ SETUP ------//
         
-        static $inject = ['$log', 'service'];
+        static $inject = ['$log', 'itemService'];
         
-        constructor(public $log, public service) {
-            this.items = this.service.getItems();
+        constructor(public $log, public itemService) {
+            this.items = this.itemService.getItems();
         }
         
         //------ MEMBERS ------//
@@ -334,13 +340,13 @@ module app {
         //------ METHODS ------//
         
         addItem():void {
-            this.service.addItem(this.newItem);
+            this.itemService.addItem(this.newItem);
             this.$log.debug('Item added');
         }
 		
-    		renameItem(name:string):void {
-    			  this.service.renameItem(name);
-    		}
+        renameItem(name:string):void {
+           this.itemService.renameItem(name);
+        }
         
     }
     
