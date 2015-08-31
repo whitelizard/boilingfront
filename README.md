@@ -12,16 +12,20 @@ Just my personal collection of notes regarding front-end - frameworks, programmi
 
 Thoughts and resources on interesting entire framework and tool combinations for a project.
 
-### Dev framework: `node.js`, `gulp`, `typescript`, `less/sass`
-Install `node.js` for your platfom.
+### Dev framework: `node.js`, `gulp`, `typescript`, `less/scss`
+Install `node.js` for your platfom. Create `package.json` file with
+```
+npm init
+```
+Add dependencies, and install them with
 ```
 npm install
 ```
-will read the projects `package.json` and installs all components.
+Create tasks in `gulpfile.js` and run them 
 ```
 gulp X
 ```
-run your build, server, watch tasks that automatically compiles typescript, less/sass etc.
+Ex of tasks would be `build`, run local `server`, `watch` that automatically compiles typescript, less/scss etc. when files are saved.
 
 ### App framework: `angularjs`, `bootstrap`, `angular-ui`
 
@@ -29,11 +33,13 @@ run your build, server, watch tasks that automatically compiles typescript, less
 - (Twitter) Bootstrap: CSS abstractions handling everything from media queries & grids to buttons & colors.
 - Angular-UI: Bundle of directives for bootstrap components using angularjs instead of jQuery.
 
-### App framework: `angularjs`, `angular-material`
+### App framework: `angularjs`, `angular-material`, (`typescript`)
 
 - Google material design concept framework in angular
+- See further down for templates of using typescript with angular 1.x
 
 #### Resources
+
 - Important angular style guide: [johnpapa](https://github.com/johnpapa/angular-styleguide)
 - Deep dive into Angular 2: [dive](https://www.opencredo.com/2015/07/08/a-deep-dive-into-angular-2-0/)
 
@@ -42,6 +48,7 @@ run your build, server, watch tasks that automatically compiles typescript, less
 - `font-awesome`
 - `d3`
 - `leaflet`
+- `materialdesignicons`
 
 ## JavaScript Knowledge Collection
 
@@ -240,7 +247,7 @@ function constructor(spec) {
 ```
 
 ## AngularJS 1.x + Typescript
-Personal evolving style guide until widely adopted such appears, or Angular 2.0 is released.
+Personal and evolving style guide until widely adopted such appears, or Angular 2.0 is released.
 ### Service template
 ```typescript
 ///<reference path="../d.ts/angularjs/angular.d.ts"/>
