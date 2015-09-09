@@ -12,16 +12,20 @@ Just my personal collection of notes regarding front-end - frameworks, programmi
 
 Thoughts and resources on interesting entire framework and tool combinations for a project.
 
-### Dev framework: `node.js`, `gulp`, `typescript`, `less/sass`
-Install `node.js` for your platfom.
+### Dev framework: `node.js`, `gulp`, `typescript`, `less/scss`
+Install `node.js` for your platfom. Create `package.json` file with
+```
+npm init
+```
+Add dependencies, and install them with
 ```
 npm install
 ```
-will read the projects `package.json` and installs all components.
+Create tasks in `gulpfile.js` and run them 
 ```
 gulp X
 ```
-run your build, server, watch tasks that automatically compiles typescript, less/sass etc.
+Ex of tasks would be `build`, run local `server`, `watch` that automatically compiles typescript, less/scss etc. when files are saved.
 
 ### App framework: `angularjs`, `bootstrap`, `angular-ui`
 
@@ -29,11 +33,13 @@ run your build, server, watch tasks that automatically compiles typescript, less
 - (Twitter) Bootstrap: CSS abstractions handling everything from media queries & grids to buttons & colors.
 - Angular-UI: Bundle of directives for bootstrap components using angularjs instead of jQuery.
 
-### App framework: `angularjs`, `angular-material`
+### App framework: `angularjs`, `angular-material`, (`typescript`)
 
 - Google material design concept framework in angular
+- See further down for templates of using typescript with angular 1.x
 
 #### Resources
+
 - Important angular style guide: [johnpapa](https://github.com/johnpapa/angular-styleguide)
 - Deep dive into Angular 2: [dive](https://www.opencredo.com/2015/07/08/a-deep-dive-into-angular-2-0/)
 
@@ -42,6 +48,7 @@ run your build, server, watch tasks that automatically compiles typescript, less
 - `font-awesome`
 - `d3`
 - `leaflet`
+- `materialdesignicons`
 
 ## JavaScript Knowledge Collection
 
@@ -240,7 +247,7 @@ function constructor(spec) {
 ```
 
 ## AngularJS 1.x + Typescript
-Personal evolving style guide until widely adopted such appears, or Angular 2.0 is released.
+Personal and evolving style guide until widely adopted such appears, or Angular 2.0 is released.
 ### Service template
 ```typescript
 ///<reference path="../d.ts/angularjs/angular.d.ts"/>
@@ -248,34 +255,40 @@ Personal evolving style guide until widely adopted such appears, or Angular 2.0 
 module services {
     'use strict';
     
-    interface service {  // matches name of the angular service
-        getItems(): ItemType[];
-        addItem(newItem:ItemType):void;
+    interface IItemService {
+        getItems: ()=>IItem[];
+        addItem: (newItem:IItem)=>void;
     }
     
-    export interface ItemType {
+    export interface IItem {
         name: string;
         available: boolean;
-        size?: number;
     }
 
     /////////////////////////
     
-    class Service implements service {
+    class ItemService implements IItemService {
+        
+        //------ SETUP ------//
     
         static $inject = ['$log'];
         static $log;
-        constructor($log) {
-            Service.$log = $log;
+        
+        constructor(public $log) {
+            ItemService.$log = $log;
         }
         
-        private items: ItemType[];
+        //------ MEMBERS ------//
         
-        getItems():ItemType[] {
+        private items: IItem[];
+        
+        //------ METHODS ------//
+        
+        getItems():IItem[] {
             return this.items;
         }
         
-        addItem(newItem:ItemType):void {
+        addItem(newItem:IItem):void {
             this.items.push(newItem);
             this.$log.debug('Item added');
         }
@@ -286,17 +299,17 @@ module services {
     
     angular
         .module('services')
-        .factory('service', factory)
+        .factory('itemService', factory)
     ;
     
     factory.$inject = ['$log'];
     
     function factory($log) {
-        return new Service($log);
+        return new ItemService($log);
     }
 }
 ```
-- Making dependencies explicitly static exposes them to other possible classes used in the same file, as `Service.$log(...)`, instead of having to deal with external dependencies as arguments to every other class used in the file.
+- Making dependencies explicitly static exposes them to other possible classes used in the same file, as `ItemService.$log(...)`, instead of having to deal with external dependencies as arguments to every other class used in the file.
 
 ### Controller template
 ```typescript
@@ -305,27 +318,41 @@ module services {
 module app {
     'use strict';
     
-    interface IMyController {
-        items: ItemType[];
-        newItem: ItemType;
-        addItem();
+    interface IItemController {
+    
+        items: IItem[];
+        newItem: IItem;
+        
+        addItem: ()=>void;
+        renameItem: (name:string)=>void;
     }
     
     /////////////////////////
     
-    class MyController implements IMyController {
+    class ItemController implements IItemController {
         
-        items: ItemType[];
-        newItem: ItemType;
+        //------ SETUP ------//
         
-        static $inject = ['$log', 'service'];
-        constructor(public $log, public service) {
-            this.items = this.service.getItems();
+        static $inject = ['$log', 'itemService'];
+        
+        constructor(public $log, public itemService) {
+            this.items = this.itemService.getItems();
         }
         
-        addItem() {
-            this.service.addItem(this.newItem);
+        //------ MEMBERS ------//
+        
+        items: IItem[];
+        newItem: IItem;
+        
+        //------ METHODS ------//
+        
+        addItem():void {
+            this.itemService.addItem(this.newItem);
             this.$log.debug('Item added');
+        }
+		
+        renameItem(name:string):void {
+           this.itemService.renameItem(name);
         }
         
     }
@@ -334,7 +361,7 @@ module app {
     
     angular
         .module('app')
-        .controller('app.MyController', MyController)
+        .controller('app.ItemController', ItemController)
     ;
 }
 ```
