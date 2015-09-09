@@ -5,13 +5,20 @@
   "main": "index.html",
   "devDependencies": {
     "bower": "^1.4.1",
+    "browserify": "^11.0.1",
     "del": "^1.2.0",
+    "dts": "^0.1.1",
     "gulp": "^3.9.0",
     "gulp-concat": "^2.6.0",
-    "gulp-live-server": "0.0.23",
+    "gulp-live-server": "0.0.27",
     "gulp-sass": "^2.0.4",
+    "gulp-sourcemaps": "^1.5.2",
     "gulp-typescript": "^2.8.1",
-    "gulp-util": "^3.0.6"
+    "gulp-util": "^3.0.6",
+    "reactify": "^1.1.1",
+    "typescript": "^1.5.3",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.1.0"
   },
   "dependencies": {
     "angular": "^1.4.3",
