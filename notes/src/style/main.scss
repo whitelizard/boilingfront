@@ -1,8 +1,10 @@
 
 @import "angular-material.min.css";
 @import "css/materialdesignicons.min.css";
-@import "../../../material/src/core/style/variables.scss";  /*needs material repo in same folder as this project*/
-@import "../../../material/src/core/style/mixins.scss";  /*needs material repo in same folder as this project*/
+
+// sass/scss imports, that will be imported at compile time
+@import "../../lib/material-style/variables.scss";  /*needs copy of this file from material src repo*/
+@import "../../lib/material-style/mixins.scss";  /*needs copy of this file from material src repo*/
 
 .mdi {
     font-size: 24px;

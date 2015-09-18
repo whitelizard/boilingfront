@@ -3,11 +3,11 @@
 /////////// IMPORTS ///////////
 
 var gulp = require('gulp');
+var del = require('del');
 var gutil = require('gulp-util');
 var concat = require('gulp-concat');
 var sass = require('gulp-sass');
 var gls = require('gulp-live-server');
-var del = require('del');
 var typescript = require('gulp-typescript');
 var merge = require('merge2');
 var browserify = require('browserify');
@@ -27,7 +27,7 @@ var config = {
             'lib/colors.js',
         ],
         style: [
-            'bower_components/angular-material/angular-material.min.css',
+            'node_modules/angular-material/angular-material.min.css',
             'bower_components/mdi/!(scss)*/*',
         ],
         map: [
@@ -44,7 +44,7 @@ var config = {
     },
     src: {
         root: 'src/app',
-        entry: './src/app/entry.js',
+        entry: './src/entry.js',
         js: 'src/app/**/*.js',
         parts: 'src/app/**/*.html',
         img: 'src/img/*',
@@ -56,9 +56,7 @@ var config = {
     dist: {
         root: 'dist',
         files: 'dist/**/*',
-        parts: 'dist/parts',
         img: 'dist/img',
-        jsAppName: 'app.js',
         jsLibName: 'lib.js',
         browserifyBundle: 'bundle.js',
     },
@@ -73,7 +71,7 @@ var config = {
 
 /////////// COMPILE AND MOVING TASKS ///////////
 
-gulp.task('clean', function() {  // bugs?
+gulp.task('clean', function() {
     del([config.dist.files]);
     del([config.src.toClean]);
 });
@@ -89,11 +87,11 @@ gulp.task('ts', function() {
 });
 
 gulp.task('content', function() {
-    gulp.src(config.app.index)
+    gulp.src(config.src.index)
         .pipe(gulp.dest(config.dist.root));
-    gulp.src(config.app.parts)
-        .pipe(gulp.dest(config.dist.parts));
-    gulp.src(config.app.img)
+    gulp.src(config.src.parts)
+        .pipe(gulp.dest(config.dist.root));
+    gulp.src(config.src.img)
         .pipe(gulp.dest(config.dist.img));
 });
 
@@ -108,7 +106,7 @@ gulp.task('libs', function() {
 });
 
 gulp.task('style', function() {
-    gulp.src(config.app.style)
+    gulp.src(config.src.style)
         .pipe(sass())
         .pipe(concat('style.css'))
         .pipe(gulp.dest(config.dist.root));
@@ -146,7 +144,7 @@ gulp.task('server', function() {
 });
 
 gulp.task('watch', function() {
-    gulp.watch(config.ts.src, ['app']);
+    gulp.watch(config.ts.src, ['ts']);
     gulp.watch(config.src.js, ['browserify']);
     gulp.watch(config.src.styles, ['style']);
     gulp.watch(config.src.index, ['content']);

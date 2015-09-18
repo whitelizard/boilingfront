@@ -1,9 +1,12 @@
-///<reference path="../d.ts/angularjs/angular.d.ts"/>
+///<reference path="../../typings/tsd.d.ts"/>
+///<reference path="../typings/extra.d.ts"/>
+
+var angular:ng.IAngularStatic = require('angular');
 
 module app {
     'use strict';
     
-    angular.module('app', ['ngMaterial', 'ngRoute', 'mdThemeColors']);
+    angular.module('app', [require('angular-material'), require('angular-route'), 'mdThemeColors']);
     
     angular
         .module('app')

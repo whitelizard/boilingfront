@@ -1,5 +1,5 @@
-///<reference path="../d.ts/angularjs/angular.d.ts"/>
-///<reference path="../d.ts/angular-material/angular-material.d.ts"/>
+///<reference path="../../typings/tsd.d.ts"/>
+///<reference path="../typings/extra.d.ts"/>
 
 // import "ng";
 

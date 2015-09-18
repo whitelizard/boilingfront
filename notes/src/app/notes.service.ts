@@ -1,4 +1,5 @@
-///<reference path="../d.ts/angularjs/angular.d.ts"/>
+///<reference path="../../typings/tsd.d.ts"/>
+///<reference path="../typings/extra.d.ts"/>
 
 module app {
     'use strict';
