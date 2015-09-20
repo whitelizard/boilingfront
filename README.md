@@ -4,9 +4,9 @@ Just my personal collection of notes regarding front-end - frameworks, programmi
 
 ## Table of Contents
 
-  1. [Framework Combinations and Boilerplates](#framework-combinations-and-boilerplates)
-  1. [Situational GUI Packages](#situational-gui-packages)
   1. [JavaScript Knowledge Collection](#javascript-knowledge-collection)
+  1. [AngularJS 1.x + Typescript](#angularjs-1.x-+-typescript)
+  1. [Frameworks etc](#frameworks-etc)
 
 ## JavaScript Knowledge Collection
 
@@ -364,6 +364,7 @@ Ex of tasks would be `build`, run local `server` and `watch` that automatically 
 
 - `font-awesome`
 - `d3`
+- `nvd3`
 - `leaflet`
 - `materialdesignicons`
 
