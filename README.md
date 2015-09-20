@@ -7,7 +7,7 @@ Table of Contents
 -----------------
 
   1. [JavaScript Knowledge Collection](#javascript-knowledge-collection)
-  1. [AngularJS 1.x + Typescript](#angularjs-1.x-typescript)
+  1. [AngularJS 1.x + Typescript](#angularjs-1x--typescript)
   1. [Frameworks etc](#frameworks-etc)
 
 JavaScript Knowledge Collection
@@ -350,6 +350,11 @@ gulp X
 Ex of tasks would be `build`, run local `server` and `watch` that automatically compiles typescript, scss etc. when files are changed.
 
 - See above section for templates of using typescript with angular 1.x
+
+### Extended dev framework: `browserify`, `tsd`
+
+- Browserify: Lets you require('modules') in the browser by bundling up all of your dependencies
+- tsd: A package manager to search and install TypeScript definition files directly from the community driven DefinitelyTyped repository.
 
 ### App framework: `angularjs`, `bootstrap`, `angular-ui`
 
