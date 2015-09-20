@@ -10,7 +10,8 @@ Table of Contents
   1. [AngularJS 1.x + Typescript](#angularjs-1x-typescript)
   1. [Frameworks etc](#frameworks-etc)
 
-## JavaScript Knowledge Collection
+JavaScript Knowledge Collection
+-------------------------------
 
 Collected knowledge, good practices and ideoms in the actual programming language of the web, building on top of the other in a somewhat cronological order.
 
@@ -206,7 +207,9 @@ function constructor(spec) {
 }
 ```
 
-## AngularJS 1.x + Typescript
+AngularJS 1.x + Typescript
+--------------------------
+
 Personal and evolving style guide until widely adopted such appears, or Angular 2.0 is released.
 ### Service template
 ```typescript
@@ -326,7 +329,8 @@ module app {
 }
 ```
 
-## Frameworks etc.
+Frameworks etc.
+---------------
 
 Thoughts and resources on interesting framework and lib combinations.
 
