@@ -1,8 +1,10 @@
-# Front-end Manifest
+Front-end Manifest
+==================
 
 Just my personal collection of notes regarding front-end - frameworks, programming style, ideoms, resources etc etc.
 
-## Table of Contents
+Table of Contents
+-----------------
 
   1. [JavaScript Knowledge Collection](#javascript-knowledge-collection)
   1. [AngularJS 1.x + Typescript](#angularjs-1x-typescript)
