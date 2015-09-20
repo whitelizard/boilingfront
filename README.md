@@ -378,4 +378,5 @@ Ex of tasks would be `build`, run local `server` and `watch` that automatically 
 - `nvd3`
 - `leaflet`
 - `materialdesignicons`
+- `messageformat`
 
