@@ -1,7 +1,7 @@
-Front-end Manifest
-==================
+Boiling front-end
+=================
 
-Just my personal collection of notes regarding front-end - frameworks, programming style, ideoms, resources etc etc.
+A changing reference, collection of knowledge and notes, and boilerplate, for front-end development.
 
 Table of Contents
 -----------------
