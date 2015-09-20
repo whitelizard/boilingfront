@@ -7,7 +7,7 @@ Table of Contents
 -----------------
 
   1. [JavaScript Knowledge Collection](#javascript-knowledge-collection)
-  1. [AngularJS 1.x + Typescript](#angularjs-1x-typescript)
+  1. [AngularJS 1.x + Typescript](#angularjs-1.x-typescript)
   1. [Frameworks etc](#frameworks-etc)
 
 JavaScript Knowledge Collection
@@ -131,7 +131,7 @@ var html = '\
     <div class="{className}">\
        <span class="foo">{name}</span>\
     </div>\
-’; // backslash is ok because your editor should spot eventual spaces
+'; // backslash is ok because your editor should spot eventual spaces
 var data = {
     className: 'bar',
     name: 'Test'
