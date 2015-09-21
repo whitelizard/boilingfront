@@ -211,16 +211,41 @@ AngularJS 1.x + Typescript
 --------------------------
 
 Personal and evolving style guide until widely adopted such appears, or Angular 2.0 is released.
+### Module template
+```typescript
+///<reference path="../../typings/tsd.d.ts"/>
+///<reference path="../typings/extra.d.ts"/>
+
+var angular:ng.IAngularStatic = require('angular');
+
+module app {
+    'use strict';
+    
+    angular.module('app', [require('angular-material'), require('angular-route')]);
+    
+    angular
+        .module('app')
+        .config(config)
+    ;
+    
+    config.$inject = ['$routeProvider'];
+    
+    function config($routeProvider) {
+    	//...
+    }
+}
+```
 ### Service template
 ```typescript
-///<reference path="../d.ts/angularjs/angular.d.ts"/>
+///<reference path="../../typings/tsd.d.ts"/>
+///<reference path="../typings/extra.d.ts"/>
 
 module services {
     'use strict';
     
     interface IItemService {
-        getItems: ()=>IItem[];
-        addItem: (newItem:IItem)=>void;
+        getItems():IItem[];
+        addItem(newItem:IItem):void;
     }
     
     export interface IItem {
@@ -243,7 +268,7 @@ module services {
         
         //------ MEMBERS ------//
         
-        private items: IItem[];
+        private items:IItem[] = [];
         
         //------ METHODS ------//
         
@@ -276,7 +301,8 @@ module services {
 
 ### Controller template
 ```typescript
-///<reference path="../d.ts/angularjs/angular.d.ts"/>
+///<reference path="../../typings/tsd.d.ts"/>
+///<reference path="../typings/extra.d.ts"/>
 
 module app {
     'use strict';
@@ -286,8 +312,8 @@ module app {
         items: IItem[];
         newItem: IItem;
         
-        addItem: ()=>void;
-        renameItem: (name:string)=>void;
+        addItem():void;
+        renameItem(name:string):void;
     }
     
     /////////////////////////
@@ -351,10 +377,10 @@ Ex of tasks would be `build`, run local `server` and `watch` that automatically 
 
 - See above section for templates of using typescript with angular 1.x
 
-### Extended dev framework: `browserify`, `tsd`
+### Extended dev framework. Above plus: `browserify`, `tsd`
 
-- Browserify: Lets you require('modules') in the browser by bundling up all of your dependencies
-- tsd: A package manager to search and install TypeScript definition files directly from the community driven DefinitelyTyped repository.
+- Browserify: Lets you require('modules') in the browser by bundling up all of your dependencies.
+- TSD: A package manager to search and install TypeScript definition files directly from the community driven DefinitelyTyped repository.
 
 ### App framework: `angularjs`, `bootstrap`, `angular-ui`
 
@@ -362,7 +388,7 @@ Ex of tasks would be `build`, run local `server` and `watch` that automatically 
 - (Twitter) Bootstrap: CSS abstractions handling everything from media queries & grids to buttons & colors.
 - Angular-UI: Bundle of directives for bootstrap components using angularjs instead of jQuery.
 
-### App framework: `angularjs`, `angular-material`
+### App framework: `angularjs`, `angular-material`, `materialdesignicons`
 
 - Google material design concept framework in angular
 
@@ -371,12 +397,11 @@ Ex of tasks would be `build`, run local `server` and `watch` that automatically 
 - Important angular style guide: [johnpapa](https://github.com/johnpapa/angular-styleguide)
 - Deep dive into Angular 2: [dive](https://www.opencredo.com/2015/07/08/a-deep-dive-into-angular-2-0/)
 
-### Situational GUI Packages
+### Situational Packages
 
 - `font-awesome`
 - `d3`
 - `nvd3`
 - `leaflet`
-- `materialdesignicons`
 - `messageformat`
 
