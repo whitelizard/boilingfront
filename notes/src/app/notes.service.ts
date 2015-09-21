@@ -8,17 +8,17 @@ module app {
         name: string;
         text: string;
     }
-	
-	interface INotesService {
     
-		localStorageAddress: string;
-		
-        getNotes: ()=>INote[];
-        addNote: (name:string)=>void;
-        deleteNote: (index:number)=>void;
-        renameNote: (index:number, name:string)=>void;
-		storeNotes: ()=>void;
-	}
+    interface INotesService {
+    
+        localStorageAddress: string;
+        
+        getNotes():INote[];
+        addNote(name:string):void;
+        deleteNote(index:number):void;
+        renameNote(index:number, name:string):void;
+        storeNotes():void;
+    }
 
     /////////////////////////
     
@@ -29,23 +29,23 @@ module app {
         static $inject = ['$log', '$timeout'];
         
         constructor(public $log, public $timeout) {
-			if (angular.isDefined(localStorage[this.localStorageAddress])) {
-				try {
-					var storedNotes = angular.fromJson(localStorage[this.localStorageAddress]);
-				} catch (e) {
-					this.$log.debug(e);
-				}
-				if (angular.isArray(storedNotes) && angular.isObject(storedNotes[0])) {
-					this.notes = storedNotes;
-				}
-			}
+            if (angular.isDefined(localStorage[this.localStorageAddress])) {
+                try {
+                    var storedNotes = angular.fromJson(localStorage[this.localStorageAddress]);
+                } catch (e) {
+                    this.$log.debug(e);
+                }
+                if (angular.isArray(storedNotes) && angular.isObject(storedNotes[0])) {
+                    this.notes = storedNotes;
+                }
+            }
         }
         
         //------ MEMBERS ------//
         
-		localStorageAddress:string = 'se.whitelizard.notes';
+        localStorageAddress:string = 'se.whitelizard.notes';
         private notes:INote[] = [{name: 'Note 1', text: ''}];
-		private saving:boolean = false;
+        private saving:boolean = false;
         
         //------ METHODS ------//
 
@@ -56,29 +56,29 @@ module app {
         addNote(name:string):void {
             this.notes.push({name:name, text:''});
             this.$log.debug('Note created');
-			this.storeNotes();
+            this.storeNotes();
         }
 
         deleteNote(index:number):void {
             this.notes.splice(index, 1);
             this.$log.debug('Note deleted');
-			this.storeNotes();
+            this.storeNotes();
         }
 
         renameNote(index:number, name:string):void {
             this.notes[index].name = name;
-			this.storeNotes();
+            this.storeNotes();
         }
-		
+        
         storeNotes():void {
-			if (this.saving) return;
-			this.saving = true;
-			this.$timeout(angular.bind(this, function () {  // Delay save to never save more often than every 2s
-				localStorage[this.localStorageAddress] = angular.toJson(this.notes);
-				this.$log.debug('Notes stored');
-				this.saving = false;
-			}), 2000, false);
-		}
+            if (this.saving) return;
+            this.saving = true;
+            this.$timeout(angular.bind(this, function () {  // Delay save to never save more often than every 2s
+                localStorage[this.localStorageAddress] = angular.toJson(this.notes);
+                this.$log.debug('Notes stored');
+                this.saving = false;
+            }), 2000, false);
+        }
 
     }
     

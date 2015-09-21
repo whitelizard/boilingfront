@@ -22,8 +22,7 @@ module app {
                 templateUrl: 'parts/main.html'
             })
             .otherwise({ redirectTo: '/' });
-            
-        // Update the theme colors to use themes on font-icons
+        
         $mdThemingProvider.theme('default')
             .primaryPalette('brown')
             .accentPalette('orange')

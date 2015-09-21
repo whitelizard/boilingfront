@@ -5,16 +5,16 @@
 
 module app {
     'use strict';
-	
-	interface INotesController {
     
-		notes: INote[];
-		
-        saveChange: ()=>void;
-        addNote: (ev:ng.IAngularEvent, name:string)=>void;
-		renameNoteDialog: (ev:ng.IAngularEvent, index:number)=>void
-		confirmDelete: (ev:ng.IAngularEvent, index:number)=>void
-	}
+    interface INotesController {
+    
+        notes: INote[];
+        
+        saveChange():void;
+        addNote(ev:ng.IAngularEvent, name:string):void;
+        renameNoteDialog(ev:ng.IAngularEvent, index:number):void
+        confirmDelete(ev:ng.IAngularEvent, index:number):void
+    }
 
     /////////////////////////
 
@@ -39,10 +39,10 @@ module app {
         };
         
         //------ METHODS ------//
-		
-		saveChange():void {
-			this.notesService.storeNotes();
-		}
+        
+        saveChange():void {
+            this.notesService.storeNotes();
+        }
         
         addNote(ev:ng.IAngularEvent):void {
             var dialogSetup = angular.merge({}, this.nameDialogSetup,
@@ -56,7 +56,7 @@ module app {
                     this.notesService.addNote(name);
                 }
             }), function () {});
-		}
+        }
         
         renameNoteDialog(ev:ng.IAngularEvent, index:number):void {
             var dialogSetup = angular.merge({}, this.nameDialogSetup,

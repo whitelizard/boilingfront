@@ -1,0 +1,9 @@
+/bower_components
+/node_modules
+/dist
+*~
+.tmp/
+npm-debug.log
+*.bak
+/src/app/**/*.js
+/typings
