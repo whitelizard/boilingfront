@@ -6,9 +6,157 @@ A changing reference, collection of knowledge and notes, and boilerplate, for fr
 Table of Contents
 -----------------
 
-  1. [JavaScript Knowledge Collection](#javascript-knowledge-collection)
   1. [AngularJS 1.x + Typescript](#angularjs-1x--typescript)
+  1. [JavaScript Knowledge Collection](#javascript-knowledge-collection)
   1. [Frameworks etc](#frameworks-etc)
+
+AngularJS 1.x + Typescript
+--------------------------
+
+Personal and evolving style guide until widely adopted such appears, or Angular 2.0 is released.
+### Module template
+```typescript
+///<reference path="../../typings/tsd.d.ts"/>
+///<reference path="../typings/extra.d.ts"/>
+
+var angular:ng.IAngularStatic = require('angular');
+
+module app {
+    'use strict';
+    
+    angular.module('app', [require('angular-material'), require('angular-route')]);
+    
+    angular
+        .module('app')
+        .config(config)
+    ;
+    
+    config.$inject = ['$routeProvider'];
+    
+    function config($routeProvider) {
+    	//...
+    }
+}
+```
+### Service template
+```typescript
+///<reference path="../../typings/tsd.d.ts"/>
+///<reference path="../typings/extra.d.ts"/>
+
+module services {
+    'use strict';
+    
+    interface IItemService {
+        getItems():IItem[];
+        addItem(newItem:IItem):void;
+    }
+    
+    export interface IItem {
+        name: string;
+        available: boolean;
+    }
+
+    /////////////////////////
+    
+    class ItemService implements IItemService {
+        
+        //------ SETUP ------//
+    
+        static $inject = ['$log'];
+        static $log;
+        
+        constructor(public $log) {
+            ItemService.$log = $log;
+        }
+        
+        //------ MEMBERS ------//
+        
+        private items:IItem[] = [];
+        
+        //------ METHODS ------//
+        
+        getItems():IItem[] {
+            return this.items;
+        }
+        
+        addItem(newItem:IItem):void {
+            this.items.push(newItem);
+            this.$log.debug('Item added');
+        }
+        
+    }
+    
+    /////////////////////////
+    
+    angular
+        .module('services')
+        .factory('itemService', factory)
+    ;
+    
+    factory.$inject = ['$log'];
+    
+    function factory($log) {
+        return new ItemService($log);
+    }
+}
+```
+- Making dependencies explicitly static exposes them to other possible classes used in the same file, as `ItemService.$log(...)`, instead of having to deal with external dependencies as arguments to every other class used in the file.
+
+### Controller template
+```typescript
+///<reference path="../../typings/tsd.d.ts"/>
+///<reference path="../typings/extra.d.ts"/>
+
+module app {
+    'use strict';
+    
+    interface IItemController {
+    
+        items: IItem[];
+        newItem: IItem;
+        
+        addItem():void;
+        renameItem(name:string):void;
+    }
+    
+    /////////////////////////
+    
+    class ItemController implements IItemController {
+        
+        //------ SETUP ------//
+        
+        static $inject = ['$log', 'itemService'];
+        
+        constructor(public $log, public itemService) {
+            this.items = this.itemService.getItems();
+        }
+        
+        //------ MEMBERS ------//
+        
+        items: IItem[];
+        newItem: IItem;
+        
+        //------ METHODS ------//
+        
+        addItem():void {
+            this.itemService.addItem(this.newItem);
+            this.$log.debug('Item added');
+        }
+		
+        renameItem(name:string):void {
+           this.itemService.renameItem(name);
+        }
+        
+    }
+    
+    /////////////////////////
+    
+    angular
+        .module('app')
+        .controller('app.ItemController', ItemController)
+    ;
+}
+```
 
 JavaScript Knowledge Collection
 -------------------------------
@@ -204,154 +352,6 @@ function constructor(spec) {
         // spec, member, method
     }
     return that;
-}
-```
-
-AngularJS 1.x + Typescript
---------------------------
-
-Personal and evolving style guide until widely adopted such appears, or Angular 2.0 is released.
-### Module template
-```typescript
-///<reference path="../../typings/tsd.d.ts"/>
-///<reference path="../typings/extra.d.ts"/>
-
-var angular:ng.IAngularStatic = require('angular');
-
-module app {
-    'use strict';
-    
-    angular.module('app', [require('angular-material'), require('angular-route')]);
-    
-    angular
-        .module('app')
-        .config(config)
-    ;
-    
-    config.$inject = ['$routeProvider'];
-    
-    function config($routeProvider) {
-    	//...
-    }
-}
-```
-### Service template
-```typescript
-///<reference path="../../typings/tsd.d.ts"/>
-///<reference path="../typings/extra.d.ts"/>
-
-module services {
-    'use strict';
-    
-    interface IItemService {
-        getItems():IItem[];
-        addItem(newItem:IItem):void;
-    }
-    
-    export interface IItem {
-        name: string;
-        available: boolean;
-    }
-
-    /////////////////////////
-    
-    class ItemService implements IItemService {
-        
-        //------ SETUP ------//
-    
-        static $inject = ['$log'];
-        static $log;
-        
-        constructor(public $log) {
-            ItemService.$log = $log;
-        }
-        
-        //------ MEMBERS ------//
-        
-        private items:IItem[] = [];
-        
-        //------ METHODS ------//
-        
-        getItems():IItem[] {
-            return this.items;
-        }
-        
-        addItem(newItem:IItem):void {
-            this.items.push(newItem);
-            this.$log.debug('Item added');
-        }
-        
-    }
-    
-    /////////////////////////
-    
-    angular
-        .module('services')
-        .factory('itemService', factory)
-    ;
-    
-    factory.$inject = ['$log'];
-    
-    function factory($log) {
-        return new ItemService($log);
-    }
-}
-```
-- Making dependencies explicitly static exposes them to other possible classes used in the same file, as `ItemService.$log(...)`, instead of having to deal with external dependencies as arguments to every other class used in the file.
-
-### Controller template
-```typescript
-///<reference path="../../typings/tsd.d.ts"/>
-///<reference path="../typings/extra.d.ts"/>
-
-module app {
-    'use strict';
-    
-    interface IItemController {
-    
-        items: IItem[];
-        newItem: IItem;
-        
-        addItem():void;
-        renameItem(name:string):void;
-    }
-    
-    /////////////////////////
-    
-    class ItemController implements IItemController {
-        
-        //------ SETUP ------//
-        
-        static $inject = ['$log', 'itemService'];
-        
-        constructor(public $log, public itemService) {
-            this.items = this.itemService.getItems();
-        }
-        
-        //------ MEMBERS ------//
-        
-        items: IItem[];
-        newItem: IItem;
-        
-        //------ METHODS ------//
-        
-        addItem():void {
-            this.itemService.addItem(this.newItem);
-            this.$log.debug('Item added');
-        }
-		
-        renameItem(name:string):void {
-           this.itemService.renameItem(name);
-        }
-        
-    }
-    
-    /////////////////////////
-    
-    angular
-        .module('app')
-        .controller('app.ItemController', ItemController)
-    ;
 }
 ```
 
