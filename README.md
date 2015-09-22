@@ -374,7 +374,7 @@ Ex of tasks would be `build`, run local `server` and `watch` that automatically 
 
 - See above section for templates of using typescript with angular 1.x
 
-### Extended dev framework. Above plus: `browserify`, `tsd`
+### Extended dev framework. Above, plus: `browserify`, `tsd`
 
 - Browserify: Lets you require('modules') in the browser by bundling up all of your dependencies.
 - TSD: A package manager to search and install TypeScript definition files directly from the community driven DefinitelyTyped repository.
@@ -391,7 +391,7 @@ Ex of tasks would be `build`, run local `server` and `watch` that automatically 
 
 #### Resources
 
-- Important angular style guide: [johnpapa](https://github.com/johnpapa/angular-styleguide)
+- Angular style guide: [johnpapa](https://github.com/johnpapa/angular-styleguide)
 - Deep dive into Angular 2: [dive](https://www.opencredo.com/2015/07/08/a-deep-dive-into-angular-2-0/)
 
 ### Situational Packages
