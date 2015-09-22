@@ -17,7 +17,6 @@ Personal and evolving style guide until widely adopted such appears, or Angular 
 ### Module template
 ```typescript
 ///<reference path="../../typings/tsd.d.ts"/>
-///<reference path="../typings/extra.d.ts"/>
 
 var angular:ng.IAngularStatic = require('angular');
 
@@ -41,7 +40,6 @@ module app {
 ### Service template
 ```typescript
 ///<reference path="../../typings/tsd.d.ts"/>
-///<reference path="../typings/extra.d.ts"/>
 
 module services {
     'use strict';
@@ -105,7 +103,6 @@ module services {
 ### Controller template
 ```typescript
 ///<reference path="../../typings/tsd.d.ts"/>
-///<reference path="../typings/extra.d.ts"/>
 
 module app {
     'use strict';
