@@ -62,7 +62,7 @@ var config = {
     },
     server: {
         lrPort: 35729,
-        port: 5000
+        port: 5005
     },
     test: {
         conf: '\src\test\karma-conf.js',
