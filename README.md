@@ -71,7 +71,7 @@ module services {
         
         private items:IItem[] = [];
         
-        //------ METHODS ------//
+        //------ INTERFACE IMPLEMENTATION ------//
         
         getItems():IItem[] {
             return this.items;
@@ -81,6 +81,8 @@ module services {
             this.items.push(newItem);
             this.$log.debug('Item added');
         }
+        
+        //------ PRIVATE METHODS ------//
         
     }
     
@@ -133,7 +135,7 @@ module app {
         items: IItem[];
         newItem: IItem;
         
-        //------ METHODS ------//
+        //------ INTERFACE IMPLEMENTATION ------//
         
         addItem():void {
             this.itemService.addItem(this.newItem);
@@ -143,6 +145,8 @@ module app {
         renameItem(name:string):void {
            this.itemService.renameItem(name);
         }
+        
+        //------ PRIVATE METHODS ------//
         
     }
     
