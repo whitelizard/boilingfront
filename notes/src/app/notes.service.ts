@@ -69,7 +69,7 @@ module app {
             this.notes[index].name = name;
             this.storeNotes();
         }
-        
+
         storeNotes():void {
             if (this.saving) return;
             this.saving = true;
@@ -78,6 +78,10 @@ module app {
                 this.$log.debug('Notes stored');
                 this.saving = false;
             }), 2000, false);
+        }
+
+        exportNotes():void {
+            console.log('exportNotes');
         }
 
     }

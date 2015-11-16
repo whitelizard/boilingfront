@@ -29,6 +29,7 @@ md-tabs {
     position: absolute;
     bottom: 10px;
     right: 10px;
+    text-align: right;
 }
 textarea {
     border: 0;
@@ -37,5 +38,11 @@ textarea {
 md-input-container {
     padding-bottom: 10px;
 }
+md-bottom-sheet {
+    button.md-grid-item-content {
+        /*background-color: white;*/
+    }
+}
+
 @import "theme.scss";
 

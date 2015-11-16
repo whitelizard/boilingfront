@@ -38,7 +38,7 @@ module app {
             clickOutsideToClose: true
         };
         
-        //------ METHODS ------//
+        //------ INTERFACE IMPLEMENTATION ------//
         
         saveChange():void {
             this.notesService.storeNotes();
@@ -49,13 +49,16 @@ module app {
                 {
                     targetEvent: ev,
                     locals: { title: 'Create new note' }
-                });
-            var nameDialog:ng.IPromise<void> = this.$mdDialog.show(dialogSetup)
-            .then(angular.bind(this, function (name) {
-                if (angular.isString(name)) {
-                    this.notesService.addNote(name);
                 }
-            }), function () {});
+            );
+            this.$mdDialog.show(dialogSetup).then(
+                function (name) {
+                    if (angular.isString(name)) {
+                        this.notesService.addNote(name);
+                    }
+                }.bind(this), 
+                function () {}
+            );
         }
         
         renameNoteDialog(ev:ng.IAngularEvent, index:number):void {
@@ -64,12 +67,14 @@ module app {
                     targetEvent: ev,
                     locals: { title: 'Rename note' }
                 });
-            var nameDialog:ng.IPromise<void> = this.$mdDialog.show(dialogSetup)
-            .then(angular.bind(this, function (newName) {
-                if (angular.isString(name)) {
-                    this.notesService.renameNote(index, newName);
-                }
-            }), function () {});
+            this.$mdDialog.show(dialogSetup).then(
+                function (newName) {
+                    if (angular.isString(name)) {
+                        this.notesService.renameNote(index, newName);
+                    }
+                }.bind(this), 
+                function () {}
+            );
         }
         
         confirmDelete(ev:ng.IAngularEvent, index:number):void {
@@ -80,16 +85,19 @@ module app {
                 .ok('OK')
                 .cancel('Cancel')
                 .targetEvent(ev);
-            this.$mdDialog.show(confirm).then(angular.bind(this, function () {
-                var name:string = this.notes[index].name;
-                this.notesService.deleteNote(index);
-                this.$mdToast.show(
-                    this.$mdToast.simple()
-                        .content('"'+name+'" deleted')
-                        .position('top right')
-                        .hideDelay(3000)
-                );
-            }), function () {});
+            this.$mdDialog.show(confirm).then(
+                function () {
+                    var name:string = this.notes[index].name;
+                    this.notesService.deleteNote(index);
+                    this.$mdToast.show(
+                        this.$mdToast.simple()
+                            .content('"'+name+'" deleted')
+                            .position('top right')
+                            .hideDelay(3000)
+                    );
+                }.bind(this), 
+                function () {}
+            );
         }
         
     }

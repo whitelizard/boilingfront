@@ -19,7 +19,7 @@
         <md-fab-actions>
             <md-button class="md-fab md-raised md-mini" aria-label="Create new note" ng-click="notebook.addNote($event)">
                 <md-tooltip md-direction="top">New note</md-tooltip>
-                <md-icon class="mdi mdi-note"></md-icon>
+                <md-icon class="mdi mdi-note-plus"></md-icon>
             </md-button>
             <md-button class="md-fab md-raised md-mini" aria-label="Rename note" ng-click="notebook.renameNoteDialog($event, notebook.selectedIndex)">
                 <md-tooltip md-direction="top">Rename note</md-tooltip>
@@ -28,6 +28,10 @@
             <md-button class="md-fab md-raised md-mini" aria-label="Delete note" ng-click="notebook.confirmDelete($event, notebook.selectedIndex)" ng-disabled="notebook.notes.length <= 1">
                 <md-tooltip md-direction="top">Delete note</md-tooltip>
                 <md-icon class="mdi mdi-delete"></md-icon>
+            </md-button>
+            <md-button class="md-fab md-raised md-mini" aria-label="More options" ng-click="framework.moreOptions($event)">
+                <md-tooltip md-direction="top">More options</md-tooltip>
+                <md-icon class="mdi mdi-dots-horizontal"></md-icon>
             </md-button>
         </md-fab-actions>
     </md-fab-speed-dial>
