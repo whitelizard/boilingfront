@@ -1,7 +1,9 @@
 Boiling front-end
 =================
 
-A changing reference, collection of knowledge and notes, and boilerplate, for front-end development.
+A changing reference and collection of knowledge and notes on front-end development.
+
+It includes an HTML5 reference app, "notes", using typescript, browserify and angular-material, which can be used as a boilerplate for new projects.
 
 Table of Contents
 -----------------
