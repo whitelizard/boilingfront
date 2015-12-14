@@ -50,17 +50,6 @@ module.exports = {
             }
         ]
     },
-    postcss: function () {
-        return [
-            require('autoprefixer')(
-                {
-                    browsers: ['last 2 versions']
-                }
-            ),
-            require('postcss-nested'),
-            require('postcss-simple-vars'),
-        ];
-    },
     resolve: {
         modulesDirectories: ['node_modules', 'bower_components'],
         extensions: ['', '.js', '.jsx']
